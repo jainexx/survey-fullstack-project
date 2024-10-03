@@ -25,7 +25,7 @@
   ```bash
     cd frontend
     npm install
-    ```
+  ```
 
 ## 專案結構
 此專案採用 Monorepo 結構，前後端程式碼都包含於同一個 GitHub 儲存庫中，方便管理與維護。
