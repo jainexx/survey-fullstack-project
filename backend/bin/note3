@@ -1,0 +1,62 @@
+[ library ]
+1. build.gradle
+2. Application 加上 security的 exclude
+
+[ 連接資料庫 ]
+application.properties
+
+[ Entity ]
+1. 連接table
+2. 連接column
+- 資料庫有勾選AI，加註釋 @GeneratedValue(strategy = GenerationType.IDENTITY)
+- 資料型態為 Integer 時必須加 @GeneratedValue
+- 資料型態為 int 時可不加 @GeneratedValue，不加時使用 Jpa 的 save() 後不會回傳屬性值
+3. 複合PK另創class管理Id
+
+[ Repository ]
+1. 創建各表的Dao
+2. 加上 extends JpaRepository<entity_name, data_type_of_PK>
+3. 加上 @Repository
+
+[ Service ]
+1. 創兩個package: service.ifs & service.impl
+2. 創建各表的 interface & impl
+3. impl implements interface
+4. Service新增方法
+
+[ vo package ]
+ 依照需求創建 Res & Req
+
+
+[ @Valid 加限制 ]
+entity 各屬性加上各自的限制
+
+
+[ exception package ]
+-複製GlovalExceptionHandler.java檔案
+
+[ constants package ]
+1. 新增 Enum > ResMessage
+* 列舉：用在寫死的資料
+
+[ 要點 ]
+@Transactional 事務方法
+- 用於批次修改資料庫的資料(新增/刪除/修改)
+- 狀況：同個方法呼叫多個 Dao 或 一個Dao但有多筆saveAll()
+- 概念：全部成功，全部失敗，失敗就回到執行前的狀態
+- 使用：加在方法或class上，可用的 library 有兩種 
+
+ObjectMapper 序列化與反序列化的工具
+- 互轉 Json 和 Java 物件
+- ObjectMapper 轉回物件時可以還原物件的資料型態
+- 見 Test 範例
+
+資料庫 PK 與 UQ 差異
+- PK: Prime Key 不能是null(NN會自動打勾)
+- UQ: Unique Index 可以是null
+
+[ @RequestParam ]
+@RequestBody 可以改成 @RequestParam
+req 只傳屬性/參數？
+
+
